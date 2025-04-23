@@ -1,3 +1,5 @@
+use super::mod_loader::ModLoaderType;
+
 #[derive(Debug, serde::Deserialize, serde::Serialize)]
 pub struct GetModFilesParameters {
     //
@@ -42,16 +44,4 @@ pub enum SortOrder {
     asc,
     #[allow(non_camel_case_types)]
     desc,
-}
-
-#[derive(Debug, serde_repr::Serialize_repr, serde_repr::Deserialize_repr)]
-#[repr(u8)]
-pub enum ModLoaderType {
-    Any = 0,
-    Forge = 1,
-    Cauldron = 2,
-    LiteLoader = 3,
-    Fabric = 4,
-    Quilt = 5,
-    NeoForge = 6,
 }

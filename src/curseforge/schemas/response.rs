@@ -5,10 +5,7 @@ pub struct DataResponse<D> {
     pub data: D,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct ListResponse<D> {
-    pub data: Vec<D>,
-}
+pub type ListResponse<D> = DataResponse<Vec<D>>;
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct PaginationResponse<D> {

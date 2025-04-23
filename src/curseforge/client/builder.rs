@@ -5,6 +5,8 @@ pub struct ClientBuilder {
     api_key: Option<String>,
 }
 
+const CURSE_FORGE_BASE_URL: &str = "https://api.curseforge.com";
+
 impl ClientBuilder {
     pub fn new() -> ClientBuilder {
         ClientBuilder {
@@ -24,13 +26,11 @@ impl ClientBuilder {
     }
 
     pub fn build(self) -> Client {
-        let base_url = self
-            .base_url
-            .unwrap_or("https://api.curseforge.com".to_string());
+        let base_url = self.base_url.unwrap_or(String::from(CURSE_FORGE_BASE_URL));
 
-        let default_api_key = env!("CURSE_FORGE_API_KEY").to_string();
+        let default_api_key = String::from(env!("CURSE_FORGE_API_KEY"));
         let api_key = self.api_key.unwrap_or(default_api_key);
 
-        Client { base_url, api_key }
+        Client::new(&base_url, &api_key)
     }
 }

@@ -1,6 +1,7 @@
 mod categories;
 mod files;
 mod games;
+mod mod_loader;
 mod mods;
 mod pagination;
 mod parameters;
